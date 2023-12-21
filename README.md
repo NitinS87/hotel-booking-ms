@@ -6,7 +6,7 @@ This repository contains the codebase for a Hotel Room Booking microservices pro
 
 ## High-Level Design (HLD)
 
-![High-Level Design]![image](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/601c40f4-7760-4ef7-acc7-15281c86b94a)
+![image](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/601c40f4-7760-4ef7-acc7-15281c86b94a)
 
 
 
