@@ -33,23 +33,34 @@ This repository contains the codebase for a Hotel Room Booking microservices pro
 
 #### Endpoint 1: /booking (Booking Service)
 
-![Booking Endpoint](link-to-booking-endpoint-screenshot.png)
+![Booking Endpoint](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/9b953628-5c3f-4044-8723-ead39ca7dbc1)
+![DB](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/399478ff-ec41-4988-84ca-9bb3bafd10ee)
+
+
 
 *Provide a brief description of the booking endpoint and its parameters.*
 
 #### Endpoint 2: /transaction (Payment Service)
 
-![Transaction Endpoint](link-to-transaction-endpoint-screenshot.png)
+![Transaction Endpoint](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/e73d8a68-1c12-4723-a123-ba97accba68a)
+![DB](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/4f359d3e-3a01-41cc-8d22-27733f9285b3)
+
 
 *Describe the transaction endpoint and its input/output.*
 
 #### Endpoint 3: /booking/{bookingId} (Booking Service)
+![Booking Details](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/7877c846-39e5-4ad4-8b92-54669323fb95)
+
 
 *Insert a brief description of the new endpoint to get booking details by booking ID.*
 
 #### Endpoint 4: /transaction/{transactionId} (Payment Service)
 
 *Provide details about the new endpoint to get transaction details by transaction ID.*
+![Transaction](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/ad9228c7-9da3-439a-adda-b79f6140510d)
+
+![Eureka Server](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/2192b06d-5411-4826-9c75-b621530cd69c)
+
 
 ## Dependencies
 
