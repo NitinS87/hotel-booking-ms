@@ -80,3 +80,10 @@ This repository contains the codebase for a Hotel Room Booking microservices pro
 - Spring Boot Devtools
 
 *Note: Additional dependencies might be required based on your project logic.*
+
+## Contributors
+
+- Nitin Sharma(https://github.com/NitinS87) - 20CSU074
+- Neeraj Yadav (https://github.com/contributor-1) - 20CSU070
+- Niharika Joshi (https://github.com/contributor-2) - 20CSU071
+- Raghav Jindal (https://github.com/contributor-2) - 20CSU084
