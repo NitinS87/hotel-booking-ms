@@ -83,14 +83,16 @@ public class BookingController {
      *         successful, or an error message if not
      */
     @PostMapping("/{bookingId}/transaction")
-    public ResponseEntity<String> makePayment(@PathVariable Integer bookingId,
+    public ResponseEntity<BookingInfoEntity> makePayment(@PathVariable Integer bookingId,
             @RequestBody PaymentRequest paymentRequest) {
         try {
-            bookingService.makePayment(bookingId, paymentRequest);
-            return new ResponseEntity<>("Transaction successful. Booking confirmed.", HttpStatus.OK);
+            System.out.println("Booking Id: " + bookingId + ", Payment Request: " + paymentRequest);
+            BookingInfoEntity bookingInfoEntity = bookingService.makePayment(bookingId, paymentRequest);
+            return new ResponseEntity<>(bookingInfoEntity, HttpStatus.OK);
         } catch (InvalidBookingIdException | InvalidPaymentModeException ex) {
-            return new ResponseEntity<>("{\"message\": \"" + ex.getMessage() + "\", \"statusCode\": 400}",
-                    HttpStatus.BAD_REQUEST);
+            throw ex;
+        } catch (Exception ex) {
+            throw new RuntimeException("An unexpected error occurred");
         }
     }
 

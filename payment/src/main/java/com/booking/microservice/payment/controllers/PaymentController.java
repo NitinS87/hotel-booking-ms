@@ -36,13 +36,14 @@ public class PaymentController {
      * @return a ResponseEntity with the result of the payment operation
      */
     @PostMapping("/transaction")
-    public ResponseEntity<String> makePayment(@RequestBody PaymentRequest paymentRequest) {
+    public ResponseEntity<Integer> makePayment(@RequestBody PaymentRequest paymentRequest) {
         try {
             int transactionId = paymentService.makePayment(paymentRequest);
-            return new ResponseEntity<>("Transaction successful. Transaction ID: " + transactionId, HttpStatus.OK);
+            return new ResponseEntity<Integer>(transactionId, HttpStatus.OK);
         } catch (InvalidBookingIdException | InvalidPaymentModelException ex) {
-            return new ResponseEntity<>("{\"message\": \"" + ex.getMessage() + "\", \"statusCode\": 400}",
-                    HttpStatus.BAD_REQUEST);
+            throw ex;
+        } catch (Exception ex) {
+            throw new RuntimeException("An unexpected error occurred");
         }
     }
 
