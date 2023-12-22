@@ -29,37 +29,45 @@ This repository contains the codebase for a Hotel Room Booking microservices pro
 
 ### Postman Collection Screenshots
 
-*Insert screenshots of Postman collections, including request and response examples.*
-
 #### Endpoint 1: /booking (Booking Service)
 
-![Booking Endpoint](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/9b953628-5c3f-4044-8723-ead39ca7dbc1)
-![DB](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/399478ff-ec41-4988-84ca-9bb3bafd10ee)
+![Booking Endpoint](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/e149720a-39ce-45d7-895d-ad9bae304c12)
 
-
+![DB](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/3572b113-d52f-488c-b6f8-6952be97ee8d)
 
 *Provide a brief description of the booking endpoint and its parameters.*
 
+
+
 #### Endpoint 2: /transaction (Payment Service)
 
-![Transaction Endpoint](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/e73d8a68-1c12-4723-a123-ba97accba68a)
-![DB](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/4f359d3e-3a01-41cc-8d22-27733f9285b3)
+![Transaction Endpoint](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/4c29c70d-2b09-4bf7-b004-a8152fa77e50)
 
+![DB](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/6bacc07c-76d9-422a-8375-24b5bb1bdd3c)
 
 *Describe the transaction endpoint and its input/output.*
 
-#### Endpoint 3: /booking/{bookingId} (Booking Service)
-![Booking Details](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/7877c846-39e5-4ad4-8b92-54669323fb95)
 
+
+#### Endpoint 3: /booking/{bookingId} (Booking Service)
+
+![Booking Details](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/911660d3-44f9-47f6-8388-7bd186e6b756)
 
 *Insert a brief description of the new endpoint to get booking details by booking ID.*
+
+
 
 #### Endpoint 4: /transaction/{transactionId} (Payment Service)
 
 *Provide details about the new endpoint to get transaction details by transaction ID.*
-![Transaction](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/ad9228c7-9da3-439a-adda-b79f6140510d)
+![Transaction](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/ad0e4169-b45e-402b-86b2-e81278599fb0)
+![Invalid Booking Id](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/2ca0e302-d6f4-45c8-a668-01cf0846809d)
+![Invalid Mode of Payment](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/223effca-05b5-4492-8ea6-4472cff7e8e3)
 
-![Eureka Server](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/2192b06d-5411-4826-9c75-b621530cd69c)
+
+
+![Eureka Server](https://github.com/NitinS87/hotel-booking-ms/assets/80587065/0237181f-a55d-4037-9f35-897d6dc57e42)
+
 
 
 ## Dependencies
