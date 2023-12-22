@@ -30,13 +30,18 @@ public class BookingService {
     private RestTemplate restTemplate;
     @Autowired
     private DiscoveryClient discoveryClient;
-    // private final PaymentService paymentService;
 
-    public BookingService(BookingRepository bookingRepository/* , PaymentService paymentService */) {
+    public BookingService(BookingRepository bookingRepository) {
         this.bookingRepository = bookingRepository;
-        // this.paymentService = paymentService;
     }
 
+    /**
+     * Saves a booking based on the provided booking request.
+     *
+     * @param bookingRequest The booking request containing the necessary
+     *                       information.
+     * @return The saved booking information entity.
+     */
     public BookingInfoEntity saveBooking(BookingRequest bookingRequest) {
         String roomNumbers = "";
         for (int i = 0; i < bookingRequest.getNumOfRooms(); i++) {
@@ -58,6 +63,15 @@ public class BookingService {
         return bookingRepository.save(bookingInfo);
     }
 
+    /**
+     * Makes a payment for a booking and returns the updated BookingInfoEntity.
+     *
+     * @param bookingId      The ID of the booking.
+     * @param paymentRequest The payment request containing the payment details.
+     * @return The updated BookingInfoEntity after the payment is made.
+     * @throws InvalidBookingIdException   If the booking ID is invalid.
+     * @throws InvalidPaymentModeException If the payment mode is invalid.
+     */
     public BookingInfoEntity makePayment(Integer bookingId, PaymentRequest paymentRequest) {
         BookingInfoEntity bookingInfo = getBookingById(bookingId);
 
@@ -86,27 +100,63 @@ public class BookingService {
         return bookingRepository.save(bookingInfo);
     }
 
+    /**
+     * Retrieves all bookings from the database.
+     *
+     * @return an Iterable of BookingInfoEntity containing all bookings
+     */
     public Iterable<BookingInfoEntity> getAllBookings() {
         return bookingRepository.findAll();
     }
 
+    /**
+     * Retrieves a booking entity by its ID.
+     *
+     * @param bookingId the ID of the booking entity to retrieve
+     * @return the booking entity with the specified ID, or null if not found
+     */
     public BookingInfoEntity getBookingById(Integer bookingId) {
         return bookingRepository.findById(bookingId).orElse(null);
     }
 
+    /**
+     * Generates a random room number.
+     *
+     * @return a randomly generated room number as a String.
+     */
     private String generateRandomRoomNumbers() {
         Random random = new Random();
         return String.valueOf(random.nextInt(100) + 1);
     }
 
+    /**
+     * Calculates the total price for a given number of rooms.
+     *
+     * @param numOfRooms the number of rooms to calculate the price for
+     * @return the total price for the given number of rooms
+     */
     private int calculateRoomPrice(int numOfRooms) {
         return 1000 * numOfRooms; // Replace with your logic
     }
 
+    /**
+     * Checks if the given payment mode is valid.
+     * Valid payment modes are "UPI" and "CARD" (case-insensitive).
+     *
+     * @param paymentMode the payment mode to be checked
+     * @return true if the payment mode is valid, false otherwise
+     */
     private boolean isValidPaymentMode(String paymentMode) {
         return "UPI".equalsIgnoreCase(paymentMode) || "CARD".equalsIgnoreCase(paymentMode);
     }
 
+    /**
+     * Retrieves the service URL for the specified service name.
+     *
+     * @param serviceName the name of the service
+     * @return the service URL as a string, or null if no instances of the service
+     *         are found
+     */
     public String getServiceUrl(String serviceName) {
         System.out.println("Getting service URL for " + serviceName);
         System.out.println("All services " + discoveryClient.getServices().toString());
@@ -117,6 +167,13 @@ public class BookingService {
         return null;
     }
 
+    /**
+     * Retrieves the transaction details for a given booking ID.
+     *
+     * @param bookingId the ID of the booking
+     * @return the transaction details entity associated with the booking ID, or
+     *         null if not found
+     */
     public TransactionDetailsEntity getTransactionDetails(Integer bookingId) {
         String bookingServiceUrl = getServiceUrl("payment-service");
         System.out.println("Booking service URL " + bookingServiceUrl + "/bookings/" + bookingId + "/transaction");
@@ -127,6 +184,12 @@ public class BookingService {
         return null;
     }
 
+    /**
+     * Makes a transaction by sending a payment request to the payment service.
+     * 
+     * @param paymentRequest the payment request object containing payment details
+     * @return the transaction ID as an Integer
+     */
     public Integer makeTransaction(PaymentRequest paymentRequest) {
         String bookingServiceUrl = getServiceUrl("payment-service");
         System.out.println("Booking service URL " + bookingServiceUrl + "/payment/transaction");

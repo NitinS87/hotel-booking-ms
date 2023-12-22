@@ -47,6 +47,14 @@ public class PaymentController {
         }
     }
 
+    /**
+     * Retrieves the details of a transaction based on the provided transaction ID.
+     *
+     * @param transactionId The ID of the transaction to retrieve.
+     * @return The ResponseEntity containing the transaction details.
+     * @throws TransactionNotFoundException If the transaction with the given ID is
+     *                                      not found.
+     */
     @GetMapping("/transaction/{transactionId}")
     public ResponseEntity<TransactionDetailsEntity> getTransactionDetails(@PathVariable int transactionId) {
         try {

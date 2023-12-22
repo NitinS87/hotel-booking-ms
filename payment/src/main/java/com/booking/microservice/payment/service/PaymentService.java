@@ -44,8 +44,6 @@ public class PaymentService {
             throw new InvalidBookingIdException("Invalid Booking Id");
         }
 
-        
-
         if (!isValidPaymentMode(paymentRequest.getPaymentMode())) {
             throw new InvalidPaymentModelException("Invalid mode of payment");
         }
