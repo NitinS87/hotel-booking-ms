@@ -1,17 +1,17 @@
 version: "3"
 services:
   mysqldb:
-    image: mysql:8.1.0
-    container_name: mysqldb
-    restart: always
-    networks:
-      - microservices-network
+    image: "mysql:latest"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: bookingDB
-      MYSQL_PASSWORD: Nitin@243
+      - "MYSQL_DATABASE=bookingDB"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_ROOT_PASSWORD=verysecret"
+      - "MYSQL_USER=myuser"
+      - MYSQL_ROOT_HOST=%
     ports:
-      - 3307:3306
+      - "3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
   discovery-service:
     build: ./discovery-service
     networks:
@@ -38,20 +38,12 @@ services:
     depends_on:
       - mysqldb
       - discovery-service
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3307/database?autoReconnect=true&useSSL=false?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
     ports:
       - 8081:8081
   payment:
     build: ./payment
     networks:
       - microservices-network
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3307/database?autoReconnect=true&useSSL=false?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - mysqldb
       - discovery-service
